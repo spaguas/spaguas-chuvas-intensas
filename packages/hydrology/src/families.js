@@ -1,0 +1,5 @@
+const variable=(name,value)=>({name,label:name,unit:'',default_value:value,min_value:-1e7,max_value:1e7});
+export const BUILTIN_FAMILIES=[
+  {id:'00000000-0000-4000-8000-000000000001',family_code:'GUMBEL',version:1,name:'Gumbel / Chow',description:'Modelo de média e dispersão com fator de frequência logarítmico.',expression:'A*(t+B)^C + D*(t+E)^F*(G + H*ln(log1p(1/(T-1))))',default_unit:'mm_min',variables:Object.entries({A:1,B:20,C:-.8,D:1,E:20,F:-.8,G:-.48,H:-.9}).map(([name,value])=>variable(name,value)),change_notes:'Definição inicial compatível com o catálogo DAEE/CTH.'},
+  {id:'00000000-0000-4000-8000-000000000002',family_code:'GENERAL',version:1,name:'Geral — variante 1',description:'Forma explícita compatível com a lei de potência e a variante geral da aplicação.',expression:'C*T^m/(t+to)^(n+k*T^d)+p',default_unit:'mm_min',variables:Object.entries({C:1,to:20,n:.8,k:0,m:.15,d:0,p:0}).map(([name,value])=>variable(name,value)),change_notes:'Definição inicial compatível com o avaliador GENERAL_V1.'}
+];

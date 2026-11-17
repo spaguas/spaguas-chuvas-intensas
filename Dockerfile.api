@@ -1,0 +1,16 @@
+FROM node:24-alpine
+RUN apk add --no-cache poppler-utils tesseract-ocr tesseract-ocr-data-por
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY apps/api/package.json apps/api/package.json
+COPY apps/web/package.json apps/web/package.json
+COPY packages/hydrology/package.json packages/hydrology/package.json
+RUN npm ci --omit=dev --workspace=@chuvas/api --workspace=@chuvas/hydrology --include-workspace-root=false && npm cache clean --force
+COPY --chown=node:node apps/api apps/api
+COPY --chown=node:node packages/hydrology packages/hydrology
+COPY --chown=node:node db db
+COPY --chown=node:node data data
+COPY --chown=node:node docs/source docs/source
+USER node
+EXPOSE 3108
+CMD ["node","apps/api/src/server.js"]

@@ -1,0 +1,527 @@
+[
+  {
+    "municipality": "Andradina",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Araraquara",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Auriflama",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Barbosa",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Batatais",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Bauru",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Bertioga",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Botucatu",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Buri",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Caçapava",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Cachoeira Paulista",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Campinas",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Campos do Jordão",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Caraguatatuba",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Colômbia",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Cotia",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Cubatão",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Eldorado",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Elias Fausto",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Emilianópolis",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Franco da Rocha",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Garça",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Guarani d'Oeste",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Guará",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Guarujá",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Guarulhos",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Iguape",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Itajobi",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Itaju",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Itanhaém",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Itararé",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Itu",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Leme",
+    "status": "pending",
+    "reference_points": 90,
+    "mismatches": 84,
+    "notes": "Divergência fórmula/tabela em 84 pontos (tolerância max(0,25 mm/h; 1%)). Exemplo t=10, T=2: calculado 90.173 vs tabela 89.0."
+  },
+  {
+    "municipality": "Limeira",
+    "status": "pending",
+    "reference_points": 45,
+    "mismatches": 45,
+    "notes": "Divergência fórmula/tabela em 45 pontos (tolerância max(0,25 mm/h; 1%)). Exemplo t=10, T=2: calculado 6501.105 vs tabela 108.3."
+  },
+  {
+    "municipality": "Lins",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Lorena",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Lutécia",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Marabá Paulista",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Martinópolis",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Mococa",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Mogi das Cruzes",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Mogi Guaçu",
+    "status": "pending",
+    "reference_points": 90,
+    "mismatches": 90,
+    "notes": "Divergência fórmula/tabela em 90 pontos (tolerância max(0,25 mm/h; 1%)). Exemplo t=10, T=2: calculado -76.187 vs tabela 86.1."
+  },
+  {
+    "municipality": "Natividade da Serra",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Panorama",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Paulo de Faria",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Piacatu",
+    "status": "pending",
+    "reference_points": 90,
+    "mismatches": 55,
+    "notes": "Divergência fórmula/tabela em 55 pontos (tolerância max(0,25 mm/h; 1%)). Exemplo t=10, T=2: calculado 88.238 vs tabela 86.5."
+  },
+  {
+    "municipality": "Piracicaba",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Piraju",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Pradópolis",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Queluz",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Reginópolis",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Rifaina",
+    "status": "pending",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": "Limite inferior impresso 109 min; tabela inclui durações menores. Revisão necessária."
+  },
+  {
+    "municipality": "Salesópolis",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Salto Grande",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Salto de Pirapora",
+    "status": "pending",
+    "reference_points": 90,
+    "mismatches": 90,
+    "notes": "Divergência fórmula/tabela em 90 pontos (tolerância max(0,25 mm/h; 1%)). Exemplo t=10, T=2: calculado 5792.735 vs tabela 87.0."
+  },
+  {
+    "municipality": "Santa Isabel",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Santos",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São Bernardo do Campo",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São Caetano do Sul",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São Carlos",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São José dos Campos",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São José do Rio Pardo",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São José do Rio Preto",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São Luiz do Paraitinga",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São Miguel Arcanjo",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São Paulo",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "São Simão",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Serrana",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Tapiraí",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Tatuí",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Taubaté",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Teodoro Sampaio",
+    "status": "pending",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": "Limite inferior impresso 9910 min, superior 1440 min. Domínio contraditório; revisão necessária."
+  },
+  {
+    "municipality": "Ubatuba",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Ubirajara",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  },
+  {
+    "municipality": "Votuporanga",
+    "status": "active",
+    "reference_points": 90,
+    "mismatches": 0,
+    "notes": ""
+  }
+]

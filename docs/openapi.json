@@ -1,0 +1,6328 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Precipitações Intensas · SP-ÁGUAS",
+    "version": "1.0.0",
+    "description": "DAEE/CTH. Durações em minutos, retorno em anos. Equações pendentes não podem ser usadas. GUMBEL: A(t+B)^C+D(t+E)^F[G+H ln ln(T/(T−1))]. GENERAL_V1: C T^m / (t+to)^(n+k T^d)+p. A unidade de cada trecho é convertida para mm/h. Observações agregadas do SIBH são estimativas indicativas, sem garantia de continuidade amostral. Famílias adicionais são cadastradas na área operacional e vinculadas por versão imutável. As expressões são interpretadas por uma gramática aritmética limitada, sem execução de JavaScript. O catálogo SGB preserva ano bibliográfico, versões do PDF, SHA-256 e validações independentes. A proteção de publicações manuais é habilitada por padrão e pode ser configurada por administradores, com auditoria. Postos na mesma coordenada contribuem uma única vez no IDW. O SIBH é consultado separadamente para 1, 2, 3, 6, 12, 24, 48 e 72 horas. Acumulados de 48h/72h continuam visíveis quando excedem o domínio IDF; nesse caso não há estimativa de retorno."
+  },
+  "servers": [
+    {
+      "url": "/chuvas_intensas/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Público"
+    },
+    {
+      "name": "Autenticação"
+    },
+    {
+      "name": "Operacional"
+    },
+    {
+      "name": "Espacial"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Verifica a conexão com PostgreSQL",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/branding": {
+      "get": {
+        "summary": "Identidade visual pública; URLs sob /chuvas_intensas/api",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Branding"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/branding": {
+      "get": {
+        "summary": "Consulta imagens para edição; apenas administrador",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrandingAdmin"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Salva logotipo e favicon com auditoria; null restaura o padrão; apenas administrador",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Branding"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BrandingInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/branding/{kind}": {
+      "get": {
+        "summary": "Imagem pública configurada; PNG, JPEG, WebP ou ICO",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "logo",
+                "favicon"
+              ]
+            }
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Imagem configurada",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/webp": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/x-icon": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/vnd.microsoft.icon": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Autentica um operador; JWT expira em 15 minutos",
+        "tags": [
+          "Autenticação"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "type": "number"
+                    },
+                    "user": {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  },
+                  "required": [
+                    "token",
+                    "expires_in",
+                    "user"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "maxLength": 72
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "summary": "Retorna a sessão atual",
+        "tags": [
+          "Autenticação"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "summary": "Revoga todos os JWTs do usuário",
+        "tags": [
+          "Autenticação"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Concluído"
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/municipalities": {
+      "get": {
+        "summary": "Lista localidades DAEE/CTH e SGB e o estado da equação",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Municipality"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/municipalities/{id}/equation": {
+      "get": {
+        "summary": "Consulta a versão ativa ou a última versão municipal",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/idf/calculate": {
+      "post": {
+        "summary": "Calcula intensidade (mm/h), altura (mm) e probabilidade anual",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Calculation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "municipality_id": {
+                    "type": "string"
+                  },
+                  "duration": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "maximum": 10080
+                  },
+                  "return_period": {
+                    "type": "number",
+                    "exclusiveMinimum": 1,
+                    "maximum": 10000
+                  }
+                },
+                "required": [
+                  "municipality_id",
+                  "duration",
+                  "return_period"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/idf/return-period": {
+      "post": {
+        "summary": "Inverte a IDF com busca limitada ao domínio; não extrapola",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReturnEstimate"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "municipality_id": {
+                    "type": "string"
+                  },
+                  "duration": {
+                    "type": "number"
+                  },
+                  "depth_mm": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "municipality_id",
+                  "duration",
+                  "depth_mm"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/idf/spatial-return-period": {
+      "post": {
+        "summary": "Identifica município por polígono e interpola retornos locais por IDW; propaga limites sem extrapolar",
+        "tags": [
+          "Espacial"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpatialResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpatialInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/spatial/reference-stations": {
+      "get": {
+        "summary": "Postos IDF com coordenadas transcritas, versões e avisos de georreferenciamento",
+        "tags": [
+          "Espacial"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "$ref": "#/components/schemas/GeographySource"
+                    },
+                    "stations": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ReferenceStation"
+                      }
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "stations"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/spatial/municipalities": {
+      "get": {
+        "summary": "645 polígonos municipais simplificados do IBGE; snapshot local",
+        "tags": [
+          "Espacial"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipalBoundaries"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/idf/curves": {
+      "get": {
+        "summary": "Gera curvas padronizadas para duração ou retorno",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [
+          {
+            "name": "municipality_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "duration",
+                "return"
+              ],
+              "default": "duration"
+            }
+          },
+          {
+            "name": "duration",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "default": 60
+            }
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "series": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "series",
+                    "rows"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/observations": {
+      "get": {
+        "summary": "Última observação por estação na janela selecionada, sem misturar durações",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [
+          {
+            "name": "municipality_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "hours",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                1,
+                2,
+                3,
+                6,
+                12,
+                24,
+                48,
+                72
+              ],
+              "default": 1
+            },
+            "description": "Janela de acumulação em horas. As observações e o estado da integração são independentes para cada janela."
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Observation"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integration/status": {
+      "get": {
+        "summary": "Estado público da sincronização SIBH",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [
+          {
+            "name": "hours",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                1,
+                2,
+                3,
+                6,
+                12,
+                24,
+                48,
+                72
+              ],
+              "default": 1
+            },
+            "description": "Janela de acumulação em horas. As observações e o estado da integração são independentes para cada janela."
+          }
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "waiting",
+                        "current",
+                        "stale",
+                        "offline"
+                      ]
+                    },
+                    "poll_seconds": {
+                      "type": "number"
+                    },
+                    "last_success_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date-time"
+                    },
+                    "latest": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/components/schemas/IntegrationRun"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "query_hours": {
+                      "type": "integer",
+                      "enum": [
+                        1,
+                        2,
+                        3,
+                        6,
+                        12,
+                        24,
+                        48,
+                        72
+                      ]
+                    },
+                    "available_windows": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "enum": [
+                          1,
+                          2,
+                          3,
+                          6,
+                          12,
+                          24,
+                          48,
+                          72
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "state",
+                    "poll_seconds",
+                    "last_success_at",
+                    "latest",
+                    "query_hours",
+                    "available_windows"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/equations": {
+      "get": {
+        "summary": "Histórico de versões das equações",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Equation"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastra nova versão; publicação exige validação numérica",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquationInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/equations/{id}": {
+      "get": {
+        "summary": "Obtém uma versão completa",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Edita criando nova versão e preservando coeficientes anteriores",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Equation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EquationInput"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Retira equação de uso; apenas administrador",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Concluído"
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/integration/runs": {
+      "get": {
+        "summary": "Últimas 100 execuções do worker",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IntegrationRun"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/audit": {
+      "get": {
+        "summary": "Últimos 100 registros de auditoria; apenas administrador",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "actor_id": {
+                        "type": "string"
+                      },
+                      "action": {
+                        "type": "string"
+                      },
+                      "entity_id": {
+                        "type": "string"
+                      },
+                      "details": {
+                        "type": "object"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "actor_id",
+                      "action",
+                      "entity_id",
+                      "details",
+                      "created_at"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/equation-families": {
+      "get": {
+        "summary": "Lista famílias, definições versionadas e quantidade de trechos vinculados",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EquationFamily"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastra família com expressão matemática e variáveis declaradas",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FamilyDefinition"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/equation-families/{code}": {
+      "put": {
+        "summary": "Cria nova versão imutável da definição sem alterar equações anteriores",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FamilyDefinition"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/equation-families/{code}/status": {
+      "patch": {
+        "summary": "Ativa/desativa a família para novos vínculos; apenas administrador",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "active": {
+                      "type": "boolean"
+                    },
+                    "is_builtin": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "active",
+                    "is_builtin",
+                    "created_at"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "active": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "active"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/equation-families/preview": {
+      "post": {
+        "summary": "Avalia expressão e coeficientes sem salvar; duração em min e retorno em anos",
+        "tags": [
+          "Operacional"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "intensity_mm_h": {
+                      "type": "number"
+                    },
+                    "depth_mm": {
+                      "type": "number"
+                    },
+                    "duration": {
+                      "type": "number"
+                    },
+                    "return_period": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "intensity_mm_h",
+                    "depth_mm",
+                    "duration",
+                    "return_period"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FamilyPreviewInput"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "summary": "Contrato OpenAPI desta API",
+        "tags": [
+          "Público"
+        ],
+        "parameters": [],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/sgb/settings": {
+      "get": {
+        "summary": "Configuração persistida, valores padrão e estado do monitor; somente admin",
+        "tags": [
+          "SGB"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SgbConfiguration"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Configura periodicidade, downloads, OCR, validação e adoção; exige revisão atual e justificativa; somente admin",
+        "tags": [
+          "SGB"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SgbConfiguration"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SgbSettingsUpdate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/sgb/publications": {
+      "get": {
+        "summary": "Publicações SGB por ano bibliográfico e município, histórico, compatibilização e validação",
+        "tags": [
+          "SGB"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "municipality_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SgbPublication"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/sgb/status": {
+      "get": {
+        "summary": "Estado do monitor de publicações SGB e intervalo configurado",
+        "tags": [
+          "SGB"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SgbStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/sgb/runs": {
+      "get": {
+        "summary": "Últimas 100 verificações SGB, contadores e falhas por documento",
+        "tags": [
+          "SGB"
+        ],
+        "parameters": [],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SgbRun"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Solicitação inválida, acesso negado ou recurso indisponível.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "Branding": {
+        "type": "object",
+        "properties": {
+          "logo_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "favicon_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "logo_url",
+          "favicon_url",
+          "updated_at"
+        ]
+      },
+      "BrandingInput": {
+        "type": "object",
+        "properties": {
+          "logo": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 1400000,
+            "description": "Imagem data URI base64, PNG/JPEG/WebP/ICO, até 1 MB; null para padrão."
+          },
+          "favicon": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 350000,
+            "description": "Imagem data URI base64, PNG/JPEG/WebP/ICO, até 256 KB; null para padrão."
+          }
+        },
+        "required": [
+          "logo",
+          "favicon"
+        ],
+        "additionalProperties": false
+      },
+      "BrandingAdmin": {
+        "type": "object",
+        "properties": {
+          "logo_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "favicon_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "updated_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "logo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "favicon": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "logo_url",
+          "favicon_url",
+          "updated_at",
+          "logo",
+          "favicon"
+        ]
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "editor"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email",
+          "role"
+        ]
+      },
+      "Municipality": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "ibge_code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "longitude": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "equation_id": {
+            "type": "string"
+          },
+          "station_name": {
+            "type": "string"
+          },
+          "station_prefix": {
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "ibge_code",
+          "name",
+          "latitude",
+          "longitude",
+          "status",
+          "equation_id",
+          "station_name",
+          "station_prefix",
+          "version"
+        ]
+      },
+      "Segment": {
+        "type": "object",
+        "properties": {
+          "family": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]{2,39}$"
+          },
+          "family_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Versão imutável selecionada. Obrigatória para famílias cadastradas. Para clientes legados, omitir em GUMBEL/GENERAL resolve a versão 1, nunca a última versão."
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "mm_min",
+              "mm_h"
+            ]
+          },
+          "duration_min": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 10080
+          },
+          "duration_max": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 10080
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "minimum": -1000000000000,
+              "maximum": 1000000000000
+            },
+            "description": "Exatamente os símbolos e limites da versão selecionada."
+          },
+          "family_definition": {
+            "$ref": "#/components/schemas/FamilyDefinition"
+          }
+        },
+        "required": [
+          "family",
+          "family_version_id",
+          "unit",
+          "duration_min",
+          "duration_max",
+          "parameters",
+          "family_definition"
+        ],
+        "additionalProperties": false
+      },
+      "EquationInput": {
+        "type": "object",
+        "properties": {
+          "municipality_id": {
+            "type": "string",
+            "pattern": "^35[0-9]{5}$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "pending"
+            ]
+          },
+          "return_min": {
+            "type": "number",
+            "exclusiveMinimum": 1
+          },
+          "return_max": {
+            "type": "number",
+            "maximum": 10000
+          },
+          "station_name": {
+            "type": "string"
+          },
+          "station_prefix": {
+            "type": "string"
+          },
+          "source_page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source_pdf_page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source_author": {
+            "type": "string"
+          },
+          "source_formula": {
+            "type": "string"
+          },
+          "review_notes": {
+            "type": "string"
+          },
+          "segments": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 10,
+            "items": {
+              "$ref": "#/components/schemas/SegmentInput"
+            }
+          },
+          "reference_checks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "duration": {
+                  "type": "number"
+                },
+                "return_period": {
+                  "type": "number"
+                },
+                "intensity_mm_h": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "duration",
+                "return_period",
+                "intensity_mm_h"
+              ]
+            }
+          },
+          "source_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri",
+            "description": "PDF da publicação selecionada; HTTPS. Ausente usa o estudo DAEE/CTH."
+          },
+          "publication_year": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1900,
+            "maximum": 2200
+          },
+          "source_agency": {
+            "type": "string"
+          },
+          "station_latitude": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": -90,
+            "maximum": 90
+          },
+          "station_longitude": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": -180,
+            "maximum": 180
+          }
+        },
+        "required": [
+          "municipality_id",
+          "status",
+          "return_min",
+          "return_max",
+          "station_name",
+          "station_prefix",
+          "source_page",
+          "source_pdf_page",
+          "source_author",
+          "source_formula",
+          "review_notes",
+          "segments",
+          "reference_checks"
+        ],
+        "additionalProperties": false
+      },
+      "Equation": {
+        "type": "object",
+        "properties": {
+          "municipality_id": {
+            "type": "string",
+            "pattern": "^35[0-9]{5}$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "pending",
+              "retired"
+            ]
+          },
+          "return_min": {
+            "type": "number",
+            "exclusiveMinimum": 1
+          },
+          "return_max": {
+            "type": "number",
+            "maximum": 10000
+          },
+          "station_name": {
+            "type": "string"
+          },
+          "station_prefix": {
+            "type": "string"
+          },
+          "source_page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source_pdf_page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source_author": {
+            "type": "string"
+          },
+          "source_formula": {
+            "type": "string"
+          },
+          "review_notes": {
+            "type": "string"
+          },
+          "segments": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 10,
+            "items": {
+              "$ref": "#/components/schemas/Segment"
+            }
+          },
+          "reference_checks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "duration": {
+                  "type": "number"
+                },
+                "return_period": {
+                  "type": "number"
+                },
+                "intensity_mm_h": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "duration",
+                "return_period",
+                "intensity_mm_h"
+              ]
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          },
+          "source_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri",
+            "description": "PDF da publicação selecionada; HTTPS. Ausente usa o estudo DAEE/CTH."
+          },
+          "publication_year": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1900,
+            "maximum": 2200
+          },
+          "source_agency": {
+            "type": "string"
+          },
+          "station_latitude": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": -90,
+            "maximum": 90
+          },
+          "station_longitude": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": -180,
+            "maximum": 180
+          }
+        },
+        "required": [
+          "municipality_id",
+          "status",
+          "return_min",
+          "return_max",
+          "station_name",
+          "station_prefix",
+          "source_page",
+          "source_pdf_page",
+          "source_author",
+          "source_formula",
+          "review_notes",
+          "segments",
+          "reference_checks",
+          "id",
+          "version"
+        ]
+      },
+      "Calculation": {
+        "type": "object",
+        "properties": {
+          "duration": {
+            "type": "number"
+          },
+          "return_period": {
+            "type": "number"
+          },
+          "intensity_mm_h": {
+            "type": "number"
+          },
+          "depth_mm": {
+            "type": "number"
+          },
+          "annual_exceedance_probability": {
+            "type": "number"
+          },
+          "equation_id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "duration",
+          "return_period",
+          "intensity_mm_h",
+          "depth_mm",
+          "annual_exceedance_probability",
+          "equation_id",
+          "version"
+        ]
+      },
+      "ReturnEstimate": {
+        "type": "object",
+        "properties": {
+          "return_period": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "bound": {
+            "type": "string",
+            "enum": [
+              "below",
+              "within",
+              "above"
+            ]
+          },
+          "limit": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "classification": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "return_period",
+          "bound",
+          "limit",
+          "classification"
+        ]
+      },
+      "IntegrationRun": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finished_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "running",
+              "success",
+              "partial",
+              "failed"
+            ]
+          },
+          "received": {
+            "type": "number"
+          },
+          "processed": {
+            "type": "number"
+          },
+          "classified": {
+            "type": "number"
+          },
+          "rejected": {
+            "type": "number"
+          },
+          "error": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "duration_ms": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "query_hours": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3,
+              6,
+              12,
+              24,
+              48,
+              72
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "started_at",
+          "finished_at",
+          "status",
+          "received",
+          "processed",
+          "classified",
+          "rejected",
+          "error",
+          "duration_ms",
+          "query_hours"
+        ]
+      },
+      "Observation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "station_id": {
+            "type": "string"
+          },
+          "station_name": {
+            "type": "string"
+          },
+          "prefix": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "municipality_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "depth_mm": {
+            "type": "number"
+          },
+          "return_period": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "return_bound": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "return_limit": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "classification": {
+            "type": "string"
+          },
+          "quality": {
+            "type": "string"
+          },
+          "quality_note": {
+            "type": "string"
+          },
+          "is_stale": {
+            "type": "boolean"
+          },
+          "latitude": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "longitude": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "duration_minutes": {
+            "type": "integer",
+            "description": "Janela de acumulação em minutos."
+          },
+          "first_reading_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "measurement_gap": {
+            "type": "integer",
+            "description": "Intervalo amostral, em minutos."
+          },
+          "sample_count": {
+            "type": "integer",
+            "description": "Quantidade de amostras agregadas pelo provedor."
+          }
+        },
+        "required": [
+          "id",
+          "station_id",
+          "station_name",
+          "prefix",
+          "city",
+          "municipality_id",
+          "observed_at",
+          "depth_mm",
+          "return_period",
+          "return_bound",
+          "return_limit",
+          "classification",
+          "quality",
+          "quality_note",
+          "is_stale",
+          "latitude",
+          "longitude",
+          "duration_minutes"
+        ]
+      },
+      "SpatialInput": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "longitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "duration": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 10080
+          },
+          "depth_mm": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "neighbors": {
+            "type": "integer",
+            "minimum": 3,
+            "maximum": 12,
+            "default": 5
+          },
+          "power": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 4,
+            "default": 2
+          },
+          "radius_km": {
+            "type": "number",
+            "minimum": 5,
+            "maximum": 300,
+            "default": 100
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude",
+          "duration",
+          "depth_mm"
+        ],
+        "additionalProperties": false
+      },
+      "GeographySource": {
+        "type": "object",
+        "properties": {
+          "provider": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "names_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "retrieved_on": {
+            "type": "string",
+            "format": "date"
+          },
+          "coordinate_reference": {
+            "type": "string"
+          },
+          "quality": {
+            "type": "string"
+          },
+          "feature_count": {
+            "type": "number"
+          },
+          "original_sha256": {
+            "type": "string"
+          },
+          "local_sha256": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "source_url",
+          "names_url",
+          "retrieved_on",
+          "coordinate_reference",
+          "quality",
+          "feature_count",
+          "original_sha256",
+          "local_sha256",
+          "note"
+        ]
+      },
+      "ReferenceStation": {
+        "type": "object",
+        "properties": {
+          "municipality_id": {
+            "type": "string"
+          },
+          "municipality_name": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "longitude": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "equation_id": {
+            "type": "string"
+          },
+          "equation_version": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "pending",
+              "retired"
+            ]
+          },
+          "station_name": {
+            "type": "string"
+          },
+          "station_prefix": {
+            "type": "string"
+          },
+          "coordinate_warning": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "duration_min": {
+            "type": "number"
+          },
+          "duration_max": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "municipality_id",
+          "municipality_name",
+          "latitude",
+          "longitude",
+          "equation_id",
+          "equation_version",
+          "status",
+          "station_name",
+          "station_prefix",
+          "coordinate_warning",
+          "duration_min",
+          "duration_max"
+        ]
+      },
+      "SpatialContribution": {
+        "type": "object",
+        "properties": {
+          "municipality_id": {
+            "type": "string"
+          },
+          "municipality_name": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "equation_id": {
+            "type": "string"
+          },
+          "equation_version": {
+            "type": "number"
+          },
+          "station_name": {
+            "type": "string"
+          },
+          "station_prefix": {
+            "type": "string"
+          },
+          "source_pdf_page": {
+            "type": "number"
+          },
+          "distance_km": {
+            "type": "number"
+          },
+          "weight": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "return_period": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "bound": {
+            "type": "string",
+            "enum": [
+              "below",
+              "within",
+              "above"
+            ]
+          },
+          "limit": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "contribution_years": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "classification": {
+            "type": "string"
+          },
+          "coordinate_warning": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri",
+            "description": "PDF da publicação selecionada; HTTPS. Ausente usa o estudo DAEE/CTH."
+          },
+          "publication_year": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1900,
+            "maximum": 2200
+          },
+          "source_agency": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "municipality_id",
+          "municipality_name",
+          "latitude",
+          "longitude",
+          "equation_id",
+          "equation_version",
+          "station_name",
+          "station_prefix",
+          "source_pdf_page",
+          "distance_km",
+          "weight",
+          "return_period",
+          "bound",
+          "limit",
+          "contribution_years",
+          "classification",
+          "coordinate_warning"
+        ]
+      },
+      "SpatialEstimate": {
+        "type": "object",
+        "properties": {
+          "return_period": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "lower_bound": {
+            "type": "number"
+          },
+          "upper_bound": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "bound": {
+            "type": "string",
+            "enum": [
+              "within",
+              "below",
+              "above",
+              "interval"
+            ]
+          },
+          "censored": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "return_period",
+          "lower_bound",
+          "upper_bound",
+          "bound",
+          "censored"
+        ]
+      },
+      "SpatialResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "estimated",
+              "bounded",
+              "insufficient_neighbors"
+            ]
+          },
+          "point": {
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "type": "number"
+              },
+              "longitude": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "latitude",
+              "longitude"
+            ]
+          },
+          "municipality": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ]
+          },
+          "local_equation_status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "pending",
+              "retired",
+              "not_registered"
+            ]
+          },
+          "duration": {
+            "type": "number"
+          },
+          "depth_mm": {
+            "type": "number"
+          },
+          "intensity_mm_h": {
+            "type": "number"
+          },
+          "estimate": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SpatialEstimate"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "neighbors": {
+                "type": "number"
+              },
+              "power": {
+                "type": "number"
+              },
+              "radius_km": {
+                "type": "number"
+              },
+              "minimum_neighbors": {
+                "type": "number"
+              },
+              "distance_method": {
+                "type": "string",
+                "const": "haversine"
+              },
+              "target": {
+                "type": "string",
+                "const": "local_return_period_years"
+              }
+            },
+            "required": [
+              "neighbors",
+              "power",
+              "radius_km",
+              "minimum_neighbors",
+              "distance_method",
+              "target"
+            ]
+          },
+          "stations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SpatialContribution"
+            }
+          },
+          "excluded_stations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "municipality_id": {
+                  "type": "string"
+                },
+                "municipality_name": {
+                  "type": "string"
+                },
+                "distance_km": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "reason": {
+                  "type": "string",
+                  "enum": [
+                    "missing_coordinates",
+                    "inactive_equation",
+                    "outside_radius",
+                    "invalid_equation_or_duration",
+                    "beyond_neighbor_count",
+                    "duplicate_reference_location"
+                  ]
+                }
+              },
+              "required": [
+                "municipality_id",
+                "municipality_name",
+                "distance_km",
+                "reason"
+              ]
+            }
+          },
+          "effective_neighbors": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "warning": {
+            "type": "string"
+          },
+          "geography_source": {
+            "$ref": "#/components/schemas/GeographySource"
+          }
+        },
+        "required": [
+          "status",
+          "point",
+          "municipality",
+          "local_equation_status",
+          "duration",
+          "depth_mm",
+          "intensity_mm_h",
+          "estimate",
+          "parameters",
+          "stations",
+          "excluded_stations",
+          "effective_neighbors",
+          "warning",
+          "geography_source"
+        ]
+      },
+      "MunicipalBoundaries": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "FeatureCollection"
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "Feature"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "codarea": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "codarea",
+                    "name"
+                  ]
+                },
+                "geometry": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "Polygon",
+                        "MultiPolygon"
+                      ]
+                    },
+                    "coordinates": {
+                      "type": "array",
+                      "items": {
+                        "type": "array"
+                      }
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "coordinates"
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "properties",
+                "geometry"
+              ]
+            }
+          }
+        },
+        "required": [
+          "type",
+          "features"
+        ]
+      },
+      "FamilyVariable": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$",
+            "description": "Símbolo sensível a maiúsculas. t, T, funções e constantes são reservados."
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 100,
+            "default": ""
+          },
+          "unit": {
+            "type": "string",
+            "maxLength": 40,
+            "default": ""
+          },
+          "default_value": {
+            "type": "number",
+            "minimum": -1000000000000,
+            "maximum": 1000000000000,
+            "default": 0
+          },
+          "min_value": {
+            "type": "number",
+            "minimum": -1000000000000,
+            "maximum": 1000000000000,
+            "default": -10000000
+          },
+          "max_value": {
+            "type": "number",
+            "minimum": -1000000000000,
+            "maximum": 1000000000000,
+            "default": 10000000
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "FormulaDefinition": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "description": "Aritmética com + - * / ^, parênteses, t, T e coeficientes declarados. Funções: ln, log, log10, log1p, exp, sqrt, abs, pow, min, max. Constantes pi e e. Sem JavaScript, atribuições ou acesso a objetos."
+          },
+          "variables": {
+            "type": "array",
+            "maxItems": 24,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$",
+                  "description": "Símbolo sensível a maiúsculas. t, T, funções e constantes são reservados."
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 100,
+                  "default": ""
+                },
+                "unit": {
+                  "type": "string",
+                  "maxLength": 40,
+                  "default": ""
+                },
+                "default_value": {
+                  "type": "number",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000,
+                  "default": 0
+                },
+                "min_value": {
+                  "type": "number",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000,
+                  "default": -10000000
+                },
+                "max_value": {
+                  "type": "number",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000,
+                  "default": 10000000
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "default_unit": {
+            "type": "string",
+            "enum": [
+              "mm_min",
+              "mm_h"
+            ]
+          }
+        },
+        "required": [
+          "expression",
+          "variables",
+          "default_unit"
+        ],
+        "additionalProperties": false
+      },
+      "FamilyInput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]{2,39}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 120
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 3000,
+            "default": ""
+          },
+          "expression": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "description": "Aritmética com + - * / ^, parênteses, t, T e coeficientes declarados. Funções: ln, log, log10, log1p, exp, sqrt, abs, pow, min, max. Constantes pi e e. Sem JavaScript, atribuições ou acesso a objetos."
+          },
+          "variables": {
+            "type": "array",
+            "maxItems": 24,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$",
+                  "description": "Símbolo sensível a maiúsculas. t, T, funções e constantes são reservados."
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 100,
+                  "default": ""
+                },
+                "unit": {
+                  "type": "string",
+                  "maxLength": 40,
+                  "default": ""
+                },
+                "default_value": {
+                  "type": "number",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000,
+                  "default": 0
+                },
+                "min_value": {
+                  "type": "number",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000,
+                  "default": -10000000
+                },
+                "max_value": {
+                  "type": "number",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000,
+                  "default": 10000000
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "default_unit": {
+            "type": "string",
+            "enum": [
+              "mm_min",
+              "mm_h"
+            ]
+          },
+          "change_notes": {
+            "type": "string",
+            "maxLength": 5000,
+            "default": ""
+          }
+        },
+        "required": [
+          "code",
+          "name",
+          "expression",
+          "variables",
+          "default_unit"
+        ],
+        "additionalProperties": false
+      },
+      "FamilyDefinition": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "family_code": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 120
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 3000,
+            "default": ""
+          },
+          "expression": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "description": "Aritmética com + - * / ^, parênteses, t, T e coeficientes declarados. Funções: ln, log, log10, log1p, exp, sqrt, abs, pow, min, max. Constantes pi e e. Sem JavaScript, atribuições ou acesso a objetos."
+          },
+          "variables": {
+            "type": "array",
+            "maxItems": 24,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$",
+                  "description": "Símbolo sensível a maiúsculas. t, T, funções e constantes são reservados."
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 100,
+                  "default": ""
+                },
+                "unit": {
+                  "type": "string",
+                  "maxLength": 40,
+                  "default": ""
+                },
+                "default_value": {
+                  "type": "number",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000,
+                  "default": 0
+                },
+                "min_value": {
+                  "type": "number",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000,
+                  "default": -10000000
+                },
+                "max_value": {
+                  "type": "number",
+                  "minimum": -1000000000000,
+                  "maximum": 1000000000000,
+                  "default": 10000000
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "default_unit": {
+            "type": "string",
+            "enum": [
+              "mm_min",
+              "mm_h"
+            ]
+          },
+          "change_notes": {
+            "type": "string",
+            "maxLength": 5000,
+            "default": ""
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "usage_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "id",
+          "family_code",
+          "version",
+          "name",
+          "description",
+          "expression",
+          "variables",
+          "default_unit",
+          "change_notes"
+        ]
+      },
+      "EquationFamily": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "is_builtin": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "latest": {
+            "$ref": "#/components/schemas/FamilyDefinition"
+          },
+          "versions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FamilyDefinition"
+            }
+          },
+          "usage_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "code",
+          "active",
+          "is_builtin",
+          "created_at",
+          "latest",
+          "versions",
+          "usage_count"
+        ]
+      },
+      "FamilyPreviewInput": {
+        "type": "object",
+        "properties": {
+          "definition": {
+            "$ref": "#/components/schemas/FormulaDefinition"
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "minimum": -1000000000000,
+              "maximum": 1000000000000
+            }
+          },
+          "duration": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 10080
+          },
+          "return_period": {
+            "type": "number",
+            "exclusiveMinimum": 1,
+            "maximum": 10000
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "mm_min",
+              "mm_h"
+            ]
+          }
+        },
+        "required": [
+          "definition",
+          "parameters",
+          "duration",
+          "return_period",
+          "unit"
+        ],
+        "additionalProperties": false
+      },
+      "SegmentInput": {
+        "type": "object",
+        "properties": {
+          "family": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]{2,39}$"
+          },
+          "family_version_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Versão imutável selecionada. Obrigatória para famílias cadastradas. Para clientes legados, omitir em GUMBEL/GENERAL resolve a versão 1, nunca a última versão."
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "mm_min",
+              "mm_h"
+            ]
+          },
+          "duration_min": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 10080
+          },
+          "duration_max": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 10080
+          },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "minimum": -1000000000000,
+              "maximum": 1000000000000
+            },
+            "description": "Exatamente os símbolos e limites da versão selecionada."
+          }
+        },
+        "required": [
+          "family",
+          "unit",
+          "duration_min",
+          "duration_max",
+          "parameters"
+        ],
+        "additionalProperties": false
+      },
+      "SgbRun": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finished_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "running",
+              "success",
+              "partial",
+              "failed"
+            ]
+          },
+          "discovered": {
+            "type": "number"
+          },
+          "changed": {
+            "type": "number"
+          },
+          "unchanged": {
+            "type": "number"
+          },
+          "imported": {
+            "type": "number"
+          },
+          "duplicates": {
+            "type": "number"
+          },
+          "pending": {
+            "type": "number"
+          },
+          "failed": {
+            "type": "number"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "settings_revision": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "settings_snapshot": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SgbSettings"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "started_at",
+          "finished_at",
+          "status",
+          "discovered",
+          "changed",
+          "unchanged",
+          "imported",
+          "duplicates",
+          "pending",
+          "failed",
+          "errors",
+          "trigger"
+        ]
+      },
+      "SgbPublication": {
+        "type": "object",
+        "properties": {
+          "external_id": {
+            "type": "string"
+          },
+          "municipality_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "municipality_name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "listing_year": {
+            "type": "number"
+          },
+          "method": {
+            "type": "string"
+          },
+          "present_on_site": {
+            "type": "boolean"
+          },
+          "last_error": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "last_checked_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "publication_version_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "issued_year": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "metadata": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "pdf_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "issues": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "model_key": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "equation_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "resolution": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "imported",
+              "duplicate",
+              "pending",
+              "alternative",
+              null
+            ]
+          },
+          "validated": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "validation": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "equation_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "external_id",
+          "municipality_id",
+          "municipality_name",
+          "url",
+          "listing_year",
+          "method",
+          "present_on_site",
+          "last_error",
+          "last_checked_at",
+          "publication_version_id",
+          "sha256",
+          "issued_year",
+          "metadata",
+          "pdf_url",
+          "issues",
+          "model_key",
+          "equation_id",
+          "resolution",
+          "validated",
+          "validation",
+          "equation_status"
+        ]
+      },
+      "SgbStatus": {
+        "type": "object",
+        "properties": {
+          "publications": {
+            "type": "number"
+          },
+          "versions": {
+            "type": "number"
+          },
+          "pending_models": {
+            "type": "number"
+          },
+          "poll_seconds": {
+            "type": "number"
+          },
+          "latest": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SgbRun"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/SgbSettings"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "next_check_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "worker_online": {
+            "type": "boolean"
+          },
+          "worker_heartbeat_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "worker_settings_revision": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "running": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "publications",
+          "versions",
+          "pending_models",
+          "poll_seconds",
+          "latest"
+        ]
+      },
+      "SgbSettings": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "poll_seconds": {
+            "type": "integer",
+            "minimum": 3600,
+            "maximum": 2592000
+          },
+          "failure_retry_seconds": {
+            "type": "integer",
+            "minimum": 60,
+            "maximum": 2592000
+          },
+          "timeout_ms": {
+            "type": "integer",
+            "minimum": 1000,
+            "maximum": 180000
+          },
+          "max_pdf_mb": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          },
+          "max_html_mb": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "retry_attempts": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "retry_delay_ms": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 30000
+          },
+          "request_delay_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 30000
+          },
+          "max_catalog_shrink_percent": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 50
+          },
+          "conditional_requests": {
+            "type": "boolean"
+          },
+          "ocr_enabled": {
+            "type": "boolean"
+          },
+          "ocr_max_pages": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "extraction_timeout_seconds": {
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 180
+          },
+          "adoption_mode": {
+            "type": "string",
+            "enum": [
+              "review",
+              "fill_missing",
+              "newer"
+            ]
+          },
+          "protect_manual": {
+            "type": "boolean"
+          },
+          "allow_same_year_revision": {
+            "type": "boolean"
+          },
+          "min_reference_points": {
+            "type": "integer",
+            "minimum": 12,
+            "maximum": 2000
+          },
+          "absolute_tolerance": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 0.25
+          },
+          "relative_tolerance_percent": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "enabled",
+          "poll_seconds",
+          "failure_retry_seconds",
+          "timeout_ms",
+          "max_pdf_mb",
+          "max_html_mb",
+          "retry_attempts",
+          "retry_delay_ms",
+          "request_delay_ms",
+          "max_catalog_shrink_percent",
+          "conditional_requests",
+          "ocr_enabled",
+          "ocr_max_pages",
+          "extraction_timeout_seconds",
+          "adoption_mode",
+          "protect_manual",
+          "allow_same_year_revision",
+          "min_reference_points",
+          "absolute_tolerance",
+          "relative_tolerance_percent"
+        ],
+        "additionalProperties": false
+      },
+      "SgbSettingsUpdate": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "settings": {
+            "$ref": "#/components/schemas/SgbSettings"
+          },
+          "change_notes": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "revision",
+          "settings",
+          "change_notes"
+        ],
+        "additionalProperties": false
+      },
+      "SgbConfiguration": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/SgbSettings"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "poll_seconds": {
+            "type": "number"
+          },
+          "next_check_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "worker_online": {
+            "type": "boolean"
+          },
+          "worker_heartbeat_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "worker_settings_revision": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "running": {
+            "type": "boolean"
+          },
+          "defaults": {
+            "$ref": "#/components/schemas/SgbSettings"
+          }
+        },
+        "required": [
+          "revision",
+          "updated_at",
+          "settings",
+          "enabled",
+          "poll_seconds",
+          "next_check_at",
+          "worker_online",
+          "worker_heartbeat_at",
+          "worker_settings_revision",
+          "running",
+          "defaults"
+        ]
+      }
+    }
+  }
+}

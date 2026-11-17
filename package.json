@@ -1,0 +1,32 @@
+{
+  "name": "spaguas-chuvas-intensas",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,green \"npm run dev -w @chuvas/api\" \"npm run dev -w @chuvas/web\"",
+    "build": "npm run build -w @chuvas/web",
+    "typecheck": "npm run typecheck -w @chuvas/web",
+    "test": "node --test apps/api/test/*.test.js",
+    "db:migrate": "npm run db:migrate -w @chuvas/api",
+    "db:seed": "npm run db:seed -w @chuvas/api",
+    "sgb:import": "node --env-file-if-exists=.env apps/api/src/import-sgb.js",
+    "sgb:sync": "node --env-file-if-exists=.env apps/api/src/sgb-worker.js --once",
+    "sgb:watch": "node --env-file-if-exists=.env apps/api/src/sgb-worker.js",
+    "admin:create": "npm run admin:create -w @chuvas/api",
+    "test:integration": "node --env-file-if-exists=.env scripts/test-integration.mjs",
+    "docs:openapi": "node scripts/export-openapi.mjs",
+    "sibh:sync": "node --env-file-if-exists=.env apps/api/src/worker.js --once"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "@playwright/test": "^1.56.0"
+  }
+}

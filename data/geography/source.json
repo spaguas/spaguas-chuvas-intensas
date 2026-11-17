@@ -1,0 +1,12 @@
+{
+  "provider": "IBGE",
+  "source_url": "https://servicodados.ibge.gov.br/api/v3/malhas/estados/35?formato=application/vnd.geo+json&qualidade=minima&intrarregiao=municipio",
+  "names_url": "https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/municipios",
+  "retrieved_on": "2026-11-05",
+  "coordinate_reference": "Geographic longitude/latitude in degrees (GeoJSON / IBGE)",
+  "quality": "minima",
+  "feature_count": 645,
+  "original_sha256": "7db0d263e8930e581223181f4c009d139b0a14a5398a332c130cab6bd7e90dff",
+  "local_sha256": "42e096e6f2fe61b38a6865f946adb8cef9db532ff00c37667cc2b37584363ca2",
+  "note": "Malha simplificada; identificação indicativa nas proximidades das divisas. Nenhum geocodificador remoto é consultado por clique."
+}

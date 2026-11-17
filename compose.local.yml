@@ -1,0 +1,33 @@
+# Complete local environment. Production can use the base Compose with an existing PostgreSQL.
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-chuvas}
+      POSTGRES_USER: ${POSTGRES_USER:-chuvas}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configure POSTGRES_PASSWORD}
+    ports: ["127.0.0.1:5448:5432"]
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    networks: [chuvas]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+  migrate:
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-chuvas}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-chuvas}
+    depends_on:
+      db: {condition: service_healthy}
+  api:
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-chuvas}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-chuvas}
+  worker:
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-chuvas}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-chuvas}
+  sgb-monitor:
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-chuvas}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-chuvas}
+volumes:
+  postgres_data:

@@ -1,0 +1,687 @@
+{
+  "25684": {
+    "sha256": "d80d93d5f9d6e8cc1a3cd8c44a9c7f9f06d6acc1eb709a7ff31729ae6515bc9e",
+    "reason": "PDF digitalizado. Amostra independente transcrita visualmente da tabela 01, página física 11 (impressa 9): durações 10, 60 e 1440 min; todas as colunas impressas, inclusive T=95 quando presente. Não corrige a fonte.",
+    "reference_checks": [
+      {
+        "duration": 10,
+        "return_period": 2,
+        "intensity_mm_h": 107.1
+      },
+      {
+        "duration": 10,
+        "return_period": 5,
+        "intensity_mm_h": 126.4
+      },
+      {
+        "duration": 10,
+        "return_period": 10,
+        "intensity_mm_h": 143.2
+      },
+      {
+        "duration": 10,
+        "return_period": 15,
+        "intensity_mm_h": 154.1
+      },
+      {
+        "duration": 10,
+        "return_period": 20,
+        "intensity_mm_h": 162.3
+      },
+      {
+        "duration": 10,
+        "return_period": 25,
+        "intensity_mm_h": 169
+      },
+      {
+        "duration": 10,
+        "return_period": 30,
+        "intensity_mm_h": 174.6
+      },
+      {
+        "duration": 10,
+        "return_period": 40,
+        "intensity_mm_h": 184
+      },
+      {
+        "duration": 10,
+        "return_period": 50,
+        "intensity_mm_h": 191.5
+      },
+      {
+        "duration": 10,
+        "return_period": 60,
+        "intensity_mm_h": 197.9
+      },
+      {
+        "duration": 10,
+        "return_period": 75,
+        "intensity_mm_h": 206.1
+      },
+      {
+        "duration": 10,
+        "return_period": 95,
+        "intensity_mm_h": 213
+      },
+      {
+        "duration": 10,
+        "return_period": 100,
+        "intensity_mm_h": 217.1
+      },
+      {
+        "duration": 60,
+        "return_period": 2,
+        "intensity_mm_h": 58.4
+      },
+      {
+        "duration": 60,
+        "return_period": 5,
+        "intensity_mm_h": 68.9
+      },
+      {
+        "duration": 60,
+        "return_period": 10,
+        "intensity_mm_h": 78.1
+      },
+      {
+        "duration": 60,
+        "return_period": 15,
+        "intensity_mm_h": 84
+      },
+      {
+        "duration": 60,
+        "return_period": 20,
+        "intensity_mm_h": 88.5
+      },
+      {
+        "duration": 60,
+        "return_period": 25,
+        "intensity_mm_h": 92.1
+      },
+      {
+        "duration": 60,
+        "return_period": 30,
+        "intensity_mm_h": 95.2
+      },
+      {
+        "duration": 60,
+        "return_period": 40,
+        "intensity_mm_h": 100.3
+      },
+      {
+        "duration": 60,
+        "return_period": 50,
+        "intensity_mm_h": 104.4
+      },
+      {
+        "duration": 60,
+        "return_period": 60,
+        "intensity_mm_h": 107.9
+      },
+      {
+        "duration": 60,
+        "return_period": 75,
+        "intensity_mm_h": 112.3
+      },
+      {
+        "duration": 60,
+        "return_period": 95,
+        "intensity_mm_h": 116.1
+      },
+      {
+        "duration": 60,
+        "return_period": 100,
+        "intensity_mm_h": 118.3
+      },
+      {
+        "duration": 1440,
+        "return_period": 2,
+        "intensity_mm_h": 4.8
+      },
+      {
+        "duration": 1440,
+        "return_period": 5,
+        "intensity_mm_h": 5.7
+      },
+      {
+        "duration": 1440,
+        "return_period": 10,
+        "intensity_mm_h": 6.5
+      },
+      {
+        "duration": 1440,
+        "return_period": 15,
+        "intensity_mm_h": 7
+      },
+      {
+        "duration": 1440,
+        "return_period": 20,
+        "intensity_mm_h": 7.3
+      },
+      {
+        "duration": 1440,
+        "return_period": 25,
+        "intensity_mm_h": 7.6
+      },
+      {
+        "duration": 1440,
+        "return_period": 30,
+        "intensity_mm_h": 7.9
+      },
+      {
+        "duration": 1440,
+        "return_period": 40,
+        "intensity_mm_h": 8.3
+      },
+      {
+        "duration": 1440,
+        "return_period": 50,
+        "intensity_mm_h": 8.6
+      },
+      {
+        "duration": 1440,
+        "return_period": 60,
+        "intensity_mm_h": 8.9
+      },
+      {
+        "duration": 1440,
+        "return_period": 75,
+        "intensity_mm_h": 9.3
+      },
+      {
+        "duration": 1440,
+        "return_period": 95,
+        "intensity_mm_h": 9.6
+      },
+      {
+        "duration": 1440,
+        "return_period": 100,
+        "intensity_mm_h": 9.8
+      }
+    ]
+  },
+  "25685": {
+    "sha256": "83985f460043c1e28f2e1a0abee81fe9a3554dbfad54cb4a90e4e4fb1c069240",
+    "reason": "PDF digitalizado. Amostra independente transcrita visualmente da tabela 01, página física 11 (impressa 9): durações 10, 60 e 1440 min; todas as colunas impressas, inclusive T=95 quando presente. Não corrige a fonte.",
+    "reference_checks": [
+      {
+        "duration": 10,
+        "return_period": 2,
+        "intensity_mm_h": 91.6
+      },
+      {
+        "duration": 10,
+        "return_period": 5,
+        "intensity_mm_h": 112.9
+      },
+      {
+        "duration": 10,
+        "return_period": 10,
+        "intensity_mm_h": 132.1
+      },
+      {
+        "duration": 10,
+        "return_period": 15,
+        "intensity_mm_h": 144.9
+      },
+      {
+        "duration": 10,
+        "return_period": 20,
+        "intensity_mm_h": 154.7
+      },
+      {
+        "duration": 10,
+        "return_period": 25,
+        "intensity_mm_h": 162.8
+      },
+      {
+        "duration": 10,
+        "return_period": 30,
+        "intensity_mm_h": 169.7
+      },
+      {
+        "duration": 10,
+        "return_period": 40,
+        "intensity_mm_h": 181.1
+      },
+      {
+        "duration": 10,
+        "return_period": 50,
+        "intensity_mm_h": 190.6
+      },
+      {
+        "duration": 10,
+        "return_period": 60,
+        "intensity_mm_h": 198.6
+      },
+      {
+        "duration": 10,
+        "return_period": 75,
+        "intensity_mm_h": 209
+      },
+      {
+        "duration": 10,
+        "return_period": 95,
+        "intensity_mm_h": 217.8
+      },
+      {
+        "duration": 10,
+        "return_period": 100,
+        "intensity_mm_h": 223.1
+      },
+      {
+        "duration": 60,
+        "return_period": 2,
+        "intensity_mm_h": 49.9
+      },
+      {
+        "duration": 60,
+        "return_period": 5,
+        "intensity_mm_h": 61.5
+      },
+      {
+        "duration": 60,
+        "return_period": 10,
+        "intensity_mm_h": 72
+      },
+      {
+        "duration": 60,
+        "return_period": 15,
+        "intensity_mm_h": 79
+      },
+      {
+        "duration": 60,
+        "return_period": 20,
+        "intensity_mm_h": 84.3
+      },
+      {
+        "duration": 60,
+        "return_period": 25,
+        "intensity_mm_h": 88.7
+      },
+      {
+        "duration": 60,
+        "return_period": 30,
+        "intensity_mm_h": 92.5
+      },
+      {
+        "duration": 60,
+        "return_period": 40,
+        "intensity_mm_h": 98.7
+      },
+      {
+        "duration": 60,
+        "return_period": 50,
+        "intensity_mm_h": 103.9
+      },
+      {
+        "duration": 60,
+        "return_period": 60,
+        "intensity_mm_h": 108.3
+      },
+      {
+        "duration": 60,
+        "return_period": 75,
+        "intensity_mm_h": 113.9
+      },
+      {
+        "duration": 60,
+        "return_period": 95,
+        "intensity_mm_h": 118.7
+      },
+      {
+        "duration": 60,
+        "return_period": 100,
+        "intensity_mm_h": 121.6
+      },
+      {
+        "duration": 1440,
+        "return_period": 2,
+        "intensity_mm_h": 4.1
+      },
+      {
+        "duration": 1440,
+        "return_period": 5,
+        "intensity_mm_h": 5.1
+      },
+      {
+        "duration": 1440,
+        "return_period": 10,
+        "intensity_mm_h": 6
+      },
+      {
+        "duration": 1440,
+        "return_period": 15,
+        "intensity_mm_h": 6.5
+      },
+      {
+        "duration": 1440,
+        "return_period": 20,
+        "intensity_mm_h": 7
+      },
+      {
+        "duration": 1440,
+        "return_period": 25,
+        "intensity_mm_h": 7.3
+      },
+      {
+        "duration": 1440,
+        "return_period": 30,
+        "intensity_mm_h": 7.7
+      },
+      {
+        "duration": 1440,
+        "return_period": 40,
+        "intensity_mm_h": 8.2
+      },
+      {
+        "duration": 1440,
+        "return_period": 50,
+        "intensity_mm_h": 8.6
+      },
+      {
+        "duration": 1440,
+        "return_period": 60,
+        "intensity_mm_h": 9
+      },
+      {
+        "duration": 1440,
+        "return_period": 75,
+        "intensity_mm_h": 9.4
+      },
+      {
+        "duration": 1440,
+        "return_period": 95,
+        "intensity_mm_h": 9.8
+      },
+      {
+        "duration": 1440,
+        "return_period": 100,
+        "intensity_mm_h": 10.1
+      }
+    ]
+  },
+  "25686": {
+    "sha256": "5a763cbed45001bd0187b57616356b57eeb30f8b36a0a4a07922af1748e4d85a",
+    "reason": "PDF digitalizado. Amostra independente transcrita visualmente da tabela 01, página física 11 (impressa 9): durações 10, 60 e 1440 min; todas as colunas impressas, inclusive T=95 quando presente. Não corrige a fonte.",
+    "reference_checks": [
+      {
+        "duration": 10,
+        "return_period": 2,
+        "intensity_mm_h": 125.3
+      },
+      {
+        "duration": 10,
+        "return_period": 5,
+        "intensity_mm_h": 142.1
+      },
+      {
+        "duration": 10,
+        "return_period": 10,
+        "intensity_mm_h": 156.3
+      },
+      {
+        "duration": 10,
+        "return_period": 15,
+        "intensity_mm_h": 165.2
+      },
+      {
+        "duration": 10,
+        "return_period": 20,
+        "intensity_mm_h": 171.8
+      },
+      {
+        "duration": 10,
+        "return_period": 25,
+        "intensity_mm_h": 177.2
+      },
+      {
+        "duration": 10,
+        "return_period": 30,
+        "intensity_mm_h": 181.6
+      },
+      {
+        "duration": 10,
+        "return_period": 40,
+        "intensity_mm_h": 188.9
+      },
+      {
+        "duration": 10,
+        "return_period": 50,
+        "intensity_mm_h": 194.8
+      },
+      {
+        "duration": 10,
+        "return_period": 60,
+        "intensity_mm_h": 199.7
+      },
+      {
+        "duration": 10,
+        "return_period": 75,
+        "intensity_mm_h": 205.9
+      },
+      {
+        "duration": 10,
+        "return_period": 100,
+        "intensity_mm_h": 214.2
+      },
+      {
+        "duration": 60,
+        "return_period": 2,
+        "intensity_mm_h": 49.5
+      },
+      {
+        "duration": 60,
+        "return_period": 5,
+        "intensity_mm_h": 56.1
+      },
+      {
+        "duration": 60,
+        "return_period": 10,
+        "intensity_mm_h": 61.7
+      },
+      {
+        "duration": 60,
+        "return_period": 15,
+        "intensity_mm_h": 65.2
+      },
+      {
+        "duration": 60,
+        "return_period": 20,
+        "intensity_mm_h": 67.8
+      },
+      {
+        "duration": 60,
+        "return_period": 25,
+        "intensity_mm_h": 69.9
+      },
+      {
+        "duration": 60,
+        "return_period": 30,
+        "intensity_mm_h": 71.7
+      },
+      {
+        "duration": 60,
+        "return_period": 40,
+        "intensity_mm_h": 74.6
+      },
+      {
+        "duration": 60,
+        "return_period": 50,
+        "intensity_mm_h": 76.9
+      },
+      {
+        "duration": 60,
+        "return_period": 60,
+        "intensity_mm_h": 78.8
+      },
+      {
+        "duration": 60,
+        "return_period": 75,
+        "intensity_mm_h": 81.3
+      },
+      {
+        "duration": 60,
+        "return_period": 100,
+        "intensity_mm_h": 84.5
+      },
+      {
+        "duration": 1440,
+        "return_period": 2,
+        "intensity_mm_h": 3.6
+      },
+      {
+        "duration": 1440,
+        "return_period": 5,
+        "intensity_mm_h": 4.1
+      },
+      {
+        "duration": 1440,
+        "return_period": 10,
+        "intensity_mm_h": 4.5
+      },
+      {
+        "duration": 1440,
+        "return_period": 15,
+        "intensity_mm_h": 4.7
+      },
+      {
+        "duration": 1440,
+        "return_period": 20,
+        "intensity_mm_h": 4.9
+      },
+      {
+        "duration": 1440,
+        "return_period": 25,
+        "intensity_mm_h": 5
+      },
+      {
+        "duration": 1440,
+        "return_period": 30,
+        "intensity_mm_h": 5.2
+      },
+      {
+        "duration": 1440,
+        "return_period": 40,
+        "intensity_mm_h": 5.4
+      },
+      {
+        "duration": 1440,
+        "return_period": 50,
+        "intensity_mm_h": 5.6
+      },
+      {
+        "duration": 1440,
+        "return_period": 60,
+        "intensity_mm_h": 5.7
+      },
+      {
+        "duration": 1440,
+        "return_period": 75,
+        "intensity_mm_h": 5.9
+      },
+      {
+        "duration": 1440,
+        "return_period": 100,
+        "intensity_mm_h": 6.1
+      }
+    ]
+  },
+  "23549": {
+    "sha256": "8d9a2d35690b8f9555e98e88b2d515b286322dbd523c8876936820a6b57f7c7f",
+    "reason": "Parâmetros transcritos das expressões numéricas (02) e (03); lista de parâmetros usa separadores inconsistentes. Sem tabela de intensidades no relatório; publicação bloqueada.",
+    "models": [
+      {
+        "key": "idf1",
+        "segments": [
+          {
+            "family": "SGB_POWER",
+            "family_version_id": "00000000-0000-4000-8000-000000000003",
+            "unit": "mm_h",
+            "duration_min": 10,
+            "duration_max": 120,
+            "parameters": {
+              "a": 29678.8,
+              "b": 0.1665,
+              "c": 46,
+              "d": 1.4345
+            }
+          },
+          {
+            "family": "SGB_POWER",
+            "family_version_id": "00000000-0000-4000-8000-000000000003",
+            "unit": "mm_h",
+            "duration_min": 120,
+            "duration_max": 1440,
+            "parameters": {
+              "a": 1193.3,
+              "b": 0.1366,
+              "c": 0,
+              "d": 0.8317
+            }
+          }
+        ],
+        "source_pdf_page": 10,
+        "source_page": 3,
+        "return_max": 60,
+        "source_excerpt": "arâmetros da equação\n\f     No caso de Santo André a IDF foi dividida em 2 equações, tendo sido definida por\nGERMANO et al. (2013). Os parâmetros das equações são os seguintes:\n\n10 min ≤ t ≤ 2h\n       a = 29,678,8 ; b = 0,1665; c = 46 e d = 1,4345;\n\n            29.678,8𝑇 0,1665\n      𝑖=     (𝑡+46)1,4345\n                                                                                      (02)\n\n\n2h < t ≤ 24h\n        a = 1,193,3 ; b = 0,1366; c = 0 e d = 0,8317;\n\n            1.193,3𝑇 0,1366\n      𝑖=       (𝑡)0,8317\n                                                                                      (03)\n\n\n\n       As duas equações são válidas para tempo de retorno de até 60 anos.\n\n\n\n3 – EXEMPLOS DE APLICAÇÃO\n\n       Suponha que em um determinado dia, em Santo André, foi registrada uma Chuva de\n40 mm com duração de 15 minutos, a qual gerou vários problemas no sistema de drenagem\npluvial da cidade. Qual é o tempo de retorno dessa precipitação?\n\n\n       Resp: Inicialmente, para se calcular o tempo de retorno será necessária a inversão da\nequação 01. Dessa forma temos:\n\n\n                           1⁄\n             𝑖(𝑡+𝑐)𝑑         𝑏\n      𝑇=[              ]                                                              (04)\n                𝑎\n\n\n\n       A intensidade da chuva registrada é a altura da chuva dividida pela duração, ou seja,\n40mm dividido por 0,25 h é igual a 160 mm/h. Substituindo os valores na equação 02 temos:\n\n\n                                                    1⁄\n                                160(15 + 46)1,4345 0,1665\n                             𝑇=[                  ]       = 57,3𝑎𝑛𝑜𝑠\n                                    29.678,8\n\f       O tempo de retorno de 57,3 anos corresponde a uma probabilidade de que esta\nintensidade de chuva seja igualada ou superada em um ano qualquer de 1,75%, ou\n\n                                         1        1\n                    𝑃(𝑖 ≥ 160𝑚𝑚/ℎ) =       100 =      100 = 1,75%\n                                         𝑇       57,3\n\n\n       O tempo de retorno do evento ocorrido, 57,3 anos, é superior aos tempos de retorno\nutiliz"
+      }
+    ]
+  },
+  "23575": {
+    "sha256": "20f6a39c8624515961601edde6203c228203517abe219f94747ba6d3b5e20e8e",
+    "reason": "Duas IDFs alternativas para áreas urbana e rural, conforme as expressões (02) e (03). Domínio 10 min–24 h, T até 50 anos. Sem tabela de intensidades; publicação bloqueada.",
+    "models": [
+      {
+        "key": "idf1",
+        "segments": [
+          {
+            "family": "SGB_POWER",
+            "family_version_id": "00000000-0000-4000-8000-000000000003",
+            "unit": "mm_h",
+            "duration_min": 10,
+            "duration_max": 1440,
+            "parameters": {
+              "a": 2712.01,
+              "b": 0.17,
+              "c": 32.6,
+              "d": 0.9358
+            }
+          }
+        ],
+        "source_pdf_page": 10,
+        "source_page": 4,
+        "return_max": 50,
+        "station_name": "Santa Luzia — zona urbana",
+        "station_latitude": -23.133333333333333,
+        "station_longitude": -45.75,
+        "source_excerpt": "ra a estação São Francisco Xavier.\n\n\n      No caso de São José dos Campos, as equações IDF apresentam os seguintes\nparâmetros:\n\n\nEstação Santa Luzia (indicada para a zona urbana do município):\n       a = 2712,01; b = 0,1700; c = 32,6 e d = 0,9358;\n\n                                   2712,01𝑇 0,1700\n                         𝑖 = (𝑡+32,6)0,9358                                                            (02)\n\n\n\nEstação São Francisco Xavier (indicada para a zona rural do município):\n       a = 895,17; b = 0,1389; c = 8,6 e d = 0,7526;\n\n                             895,17𝑇 0,1389\n                         𝑖 = (𝑡+8,6)0,7526                                                             (03)\n\n\n\n                              As duas equações são válidas para durações compreendidas entre 10min e 24h e\ntempo de retorno de até 50 anos.\n\f3 – EXEMPLOS DE APLICAÇÃO\n       Suponha que em um determinado dia, na sede do município de São José dos Campos\n(zona urbana), foi registrada uma Chuva de 35 mm com duração de 15 minutos, a qual gerou\nvários problemas no sistema de drenagem pluvial urbana da cidade. Qual é o tempo de\nretorno dessa precipitação?\n       Resp: Inicialmente, para se calcular o tempo de retorno será necessária a inversão da\nequação 01. Dessa forma temos:\n\n                           1⁄\n             𝑖(𝑡+𝑐)𝑑         𝑏\n      𝑇=[              ]                                                                      (04)\n                𝑎\n       A intensidade da chuva registrada é a altura da chuva dividida pela duração, ou seja,\n35mm dividido por 0,25 h é igual a 140 mm/h. Substituindo os valores na equação 02 temos:\n                                                      1⁄\n                               140(15 + 32,6)0,9358 0,1700\n                            𝑇=[                    ]       = 46,0𝑎𝑛𝑜𝑠\n                                    2.712,01\n       O tempo de retorno de 46,0 anos corresponde a uma probabilidade de que esta\nintensidade de chuva seja igualada ou superada em um ano qualquer de 2,17%, ou\n\n                                              1        1\n                 "
+      },
+      {
+        "key": "idf2",
+        "segments": [
+          {
+            "family": "SGB_POWER",
+            "family_version_id": "00000000-0000-4000-8000-000000000003",
+            "unit": "mm_h",
+            "duration_min": 10,
+            "duration_max": 1440,
+            "parameters": {
+              "a": 895.17,
+              "b": 0.1389,
+              "c": 8.6,
+              "d": 0.7526
+            }
+          }
+        ],
+        "source_pdf_page": 10,
+        "source_page": 4,
+        "return_max": 50,
+        "station_name": "São Francisco Xavier — zona rural",
+        "station_latitude": -22.916666666666668,
+        "station_longitude": -45.96666666666667,
+        "source_excerpt": "1𝑇 0,1700\n                         𝑖 = (𝑡+32,6)0,9358                                                            (02)\n\n\n\nEstação São Francisco Xavier (indicada para a zona rural do município):\n       a = 895,17; b = 0,1389; c = 8,6 e d = 0,7526;\n\n                             895,17𝑇 0,1389\n                         𝑖 = (𝑡+8,6)0,7526                                                             (03)\n\n\n\n                              As duas equações são válidas para durações compreendidas entre 10min e 24h e\ntempo de retorno de até 50 anos.\n\f3 – EXEMPLOS DE APLICAÇÃO\n       Suponha que em um determinado dia, na sede do município de São José dos Campos\n(zona urbana), foi registrada uma Chuva de 35 mm com duração de 15 minutos, a qual gerou\nvários problemas no sistema de drenagem pluvial urbana da cidade. Qual é o tempo de\nretorno dessa precipitação?\n       Resp: Inicialmente, para se calcular o tempo de retorno será necessária a inversão da\nequação 01. Dessa forma temos:\n\n                           1⁄\n             𝑖(𝑡+𝑐)𝑑         𝑏\n      𝑇=[              ]                                                                      (04)\n                𝑎\n       A intensidade da chuva registrada é a altura da chuva dividida pela duração, ou seja,\n35mm dividido por 0,25 h é igual a 140 mm/h. Substituindo os valores na equação 02 temos:\n                                                      1⁄\n                               140(15 + 32,6)0,9358 0,1700\n                            𝑇=[                    ]       = 46,0𝑎𝑛𝑜𝑠\n                                    2.712,01\n       O tempo de retorno de 46,0 anos corresponde a uma probabilidade de que esta\nintensidade de chuva seja igualada ou superada em um ano qualquer de 2,17%, ou\n\n                                              1        1\n                           𝑃(𝑖 ≥ 140𝑚𝑚/ℎ) =     100 =      100 = 2,17%\n                                              𝑇       46,0\n       O tempo de retorno do evento ocorrido, 46,0 anos, é superior aos tempos de retorno\nutilizados no dimensionamento do sistema de drenagem urbana de São José dos Campos,\nist"
+      }
+    ]
+  }
+}

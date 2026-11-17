@@ -1,0 +1,86 @@
+name: spaguas-chuvas-intensas
+x-runtime: &runtime
+  build:
+    context: .
+    dockerfile: Dockerfile.api
+  image: spaguas-chuvas-intensas-api:local
+  environment: &env
+    NODE_ENV: production
+    PORT: 3108
+    DATABASE_URL: ${DATABASE_URL:?Configure DATABASE_URL no arquivo .env}
+    JWT_SECRET: ${JWT_SECRET:?Configure um segredo aleatório no arquivo .env}
+    SIBH_POLL_SECONDS: ${SIBH_POLL_SECONDS:-300}
+    SIBH_TIMEOUT_MS: ${SIBH_TIMEOUT_MS:-30000}
+    SGB_POLL_SECONDS: ${SGB_POLL_SECONDS:-86400}
+    SGB_TIMEOUT_MS: ${SGB_TIMEOUT_MS:-90000}
+    SIBH_URL: ${SIBH_URL:-https://apps.spaguas.sp.gov.br/sibh/api/v2/measurements/now?station_type_id=2&hours=1&show_all=false&serializer=complete&public=true}
+  networks: [chuvas]
+  init: true
+  read_only: true
+  tmpfs: [/tmp]
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  extra_hosts: ["host.docker.internal:host-gateway"]
+services:
+  migrate:
+    <<: *runtime
+    command: [sh, -c, "node apps/api/src/migrate.js && node apps/api/src/seed.js && node apps/api/src/import-sgb.js"]
+    restart: "no"
+  api:
+    <<: *runtime
+    restart: unless-stopped
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3108/chuvas_intensas/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  worker:
+    <<: *runtime
+    command: [node, apps/api/src/worker.js]
+    restart: unless-stopped
+    stop_grace_period: 60s
+    healthcheck:
+      test: [CMD, node, apps/api/src/worker-health.js]
+      interval: 30s
+      timeout: 5s
+      start_period: 45s
+      retries: 3
+    depends_on:
+      api: {condition: service_healthy}
+  sgb-monitor:
+    <<: *runtime
+    command: [node, apps/api/src/sgb-worker.js]
+    restart: unless-stopped
+    stop_grace_period: 60s
+    healthcheck:
+      test: [CMD, node, apps/api/src/sgb-health.js]
+      interval: 60s
+      timeout: 5s
+      start_period: 120s
+      retries: 3
+    depends_on:
+      api: {condition: service_healthy}
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+      args:
+        VITE_MAP_TILE_URL: ${VITE_MAP_TILE_URL:-https://tile.openstreetmap.org/{z}/{x}/{y}.png}
+        VITE_MAP_TILE_ATTRIBUTION: ${VITE_MAP_TILE_ATTRIBUTION:-}
+    restart: unless-stopped
+    ports: ["127.0.0.1:${APP_PORT:-8089}:8080"]
+    networks: [chuvas]
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    depends_on:
+      api: {condition: service_healthy}
+networks:
+  chuvas:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${APP_SUBNET:-10.200.80.0/24}

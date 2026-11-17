@@ -1,0 +1,31 @@
+{
+  "name": "@chuvas/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=../../.env --watch src/server.js",
+    "start": "node src/server.js",
+    "worker": "node src/worker.js",
+    "db:migrate": "node --env-file-if-exists=../../.env src/migrate.js",
+    "db:seed": "node --env-file-if-exists=../../.env src/seed.js",
+    "admin:create": "node --env-file-if-exists=../../.env src/create-admin.js"
+  },
+  "dependencies": {
+    "@chuvas/hydrology": "1.0.0",
+    "@turf/boolean-point-in-polygon": "^7.4.0",
+    "bcryptjs": "^3.0.2",
+    "cheerio": "^1.1.2",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "pg": "^8.16.3",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.4"
+  }
+}
